@@ -5,11 +5,23 @@ A simple, Dockerized job discovery app that allows users to search for job listi
 ## ✨ Features
 
 -  Job Search by keyword and location  
--  Uses an external API for real-time job listings  
+-  Uses an external API for real-time job listings  ( https://rapidapi.com/letscrape-6bRBa3QguO5/api/jsearch/playground/endpoint_73845d59-2a15-4a88-92c5-e9b1bc90956d )
 -  Dockerized and runs in containers  
 -  Supports load balancing across two containers using HAProxy  
 -  Built-in error handling for unavailable API responses  
 -  Easily deployable on multi-container environments
+
+  💬 Challenges & Learnings
+Load balancing: Configuring HAProxy required inspecting IP addresses from Docker networks.
+
+API Integration: Managing API key security and rate limits was crucial.
+
+Deployment: Deploying on multiple web servers taught valuable DevOps practices.
+
+ Credits
+Thanks to Letscrape JSearch API for the job listings API.
+
+Docker and HAProxy documentation for deployment support.
 
 ---
 
