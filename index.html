@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Dream Job Finder</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<!-- 🔐 Sign In Modal -->
+<div class="modal" id="signinModal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('signinModal')">&times;</span>
+        <h2>Sign In</h2>
+        <form id="signinForm">
+            <input type="email" placeholder="Email" required />
+            <input type="password" placeholder="Password" required />
+            <button type="submit">Sign In</button>
+        </form>
+    </div>
+</div>
+
+<!-- 🆕 Sign Up Modal -->
+<div class="modal" id="signupModal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('signupModal')">&times;</span>
+        <h2>Sign Up</h2>
+        <form id="signupForm">
+            <input type="text" placeholder="Full Name" required />
+            <input type="email" placeholder="Email" required />
+            <input type="password" placeholder="Password" required />
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+</div>
+
+<body>
+<header>
+    <nav>
+        <div class="logo">JobFinder</div>
+        <ul>
+            <li><a href="#find-jobs">Find Jobs</a></li>
+            <li><a href="#people">People</a></li>
+            <li><a href="#hiring-site">Hiring Site</a></li>
+
+        </ul>
+        <div class="nav-buttons">
+            <button class="signup">Sign Up</button>
+            <button class="signin">Sign In</button>
+        </div>
+    </nav>
+</header>
+<main>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Your Global <span class="highlight">Gateway</span>To Career<span class="city"> Success</span></h1>
+        <p>When you’re searching for a job, there are a few things you can do to get the most out of your search</p>
+        <div class="sort-options">
+            <label for="sort">Sort By:</label>
+            <select id="sort">
+                <option value="relevance">Relevance</option>
+                <option value="date">Date</option>
+                <option value="salary">Salary</option>
+            </select>
+        </div>
+
+        <form id="jobSearchForm">
+            <input type="text" id="keyword" placeholder="Job title or keyword" />
+            <input type="text" id="location" placeholder="Any location" />
+            <button type="submit">🔍</button>
+        </form>
+        <div id="loading" class="loading-spinner hidden">
+            <div class="spinner"></div>
+            <p>Loading job results...</p>
+        </div>
+        <div class="filters">
+            <label><input type="checkbox" value="fulltime" class="filter-checkbox" /> Full-Time</label>
+            <label><input type="checkbox" value="parttime" class="filter-checkbox" /> Part-Time</label>
+            <label><input type="checkbox" value="remote" class="filter-checkbox" /> Remote</label>
+        </div>
+
+    </section>
+
+    <div class="categories">
+        <h2 style="text-align:center;">Browse by Category</h2>
+        <div class="category-grid">
+            <div class="category" onclick="searchByCategory('developer')">
+                <img src="https://www.theanimationguys.com/wp-content/uploads/2021/06/Sideways6.mp4_snapshot_01.25_2020.01.13_11.36.15.jpg"/>
+                <p>Tech</p>
+            </div>
+            <div class="category" onclick="searchByCategory('doctor')">
+                <img src="https://img.icons8.com/color/96/000000/health-checkup.png"/>
+                <p>Healthcare</p>
+            </div>
+            <div class="category" onclick="searchByCategory('marketing')">
+                <img src="https://animationexplainers.com/wp-content/uploads/2021/08/animation-marketing.jpg"/>
+                <p>Marketing</p>
+            </div>
+            <div class="category" onclick="searchByCategory('teacher')">
+                <img src="https://img.icons8.com/color/96/000000/classroom.png"/>
+                <p>Education</p>
+            </div>
+            <div class="category" onclick="searchByCategory('engineer')">
+                <img src="https://img.icons8.com/color/96/000000/engineering.png"/>
+                <p>Engineering</p>
+            </div>
+            <div class="category" onclick="searchByCategory('remote')">
+                <img src="https://cdn.dribbble.com/userupload/29255005/file/original-342bd4ff6d57a827c5468049f8ad0f09.jpg"/>
+                <p>Remote</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recommended Jobs -->
+    <section class="recommended">
+        <div class="section-header">
+            <h2>Recommended Jobs</h2>
+            <div class="job-buttons">
+                <button class="job-btn">Latest Jobs</button>
+                <button class="job-btn">Premium Jobs</button>
+            </div>
+        </div>
+        <div class="content">
+            <!-- Sidebar categories -->
+            <aside>
+                <h3>Job Categories</h3>
+                <ul id="categoryList">
+                    <li>Automotive <span>3 Opening</span></li>
+                    <li>Health and care <span>1 Opening</span></li>
+                    <li>Construction <span>2 Opening</span></li>
+                    <li>Fitness Trainer <span>1 Opening</span></li>
+                </ul>
+            </aside>
+
+            <!-- Job Cards -->
+            <div class="jobs-container" id="jobResults">
+                <!-- JS will inject job cards here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Top Companies -->
+    <section class="top-companies">
+        <h2>Top Company Registered</h2>
+        <p>Know your worth and find the job that qualifies your life</p>
+        <div class="company-cards">
+            <div class="company">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google Logo">
+                <span>Google - Product Design</span>
+            </div>
+            <div class="company">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Pinterest-logo.png" alt="Pinterest Logo">
+                <span>Pinterest - Product Mockup</span>
+            </div>
+            <div class="company">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" alt="Spotify Logo">
+                <span>Spotify - Web Maintenance</span>
+            </div>
+            <div class="company">
+                <img src="https://cdn.dribbble.com/userupload/5770722/file/original-33954670c54472bc6be0743decb2fc70.jpg?resize=400x0" alt="Dribbble Logo">
+                <span>Dribbble - PHP Developer</span>
+            </div>
+        </div>
+    </section>
+
+</main>
+<!-- Job Search Section -->
+<section id="find-jobs" class="recommended">
+    <!-- your job cards etc -->
+</section>
+
+<!-- People Section -->
+<section id="people">
+    <h2>Connect with professionals in your field.</h2>
+</section>
+
+<!-- Resumes -->
+<section id="resumes">
+    <h2>Get noticed by top companies.</h2>
+</section>
+
+<script src="index.js"></script>
+</body>
+</html>
