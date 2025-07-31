@@ -13,6 +13,9 @@ A simple, Dockerized job discovery app that allows users to search for job listi
 
 ---
 
+🔀 Branch Note
+Note: This repository uses master as the default branch instead of main. All source code, Docker configurations, and deployment steps are located in the master branch. Please make sure to reference master when reviewing or cloning this project.
+
 ## 🌐 Live Deployment
 Accessible via: `http://<your_lb01_public_ip>:8082`
 
