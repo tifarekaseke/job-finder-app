@@ -4,12 +4,12 @@ A simple, Dockerized job discovery app that allows users to search for job listi
 
 ## ✨ Features
 
-- 🔎 Job Search by keyword and location  
-- 🧠 Uses an external API for real-time job listings  
-- 📦 Dockerized and runs in containers  
-- ⚖️ Supports load balancing across two containers using HAProxy  
-- 🧪 Built-in error handling for unavailable API responses  
-- 💻 Easily deployable on multi-container environments
+-  Job Search by keyword and location  
+-  Uses an external API for real-time job listings  
+-  Dockerized and runs in containers  
+-  Supports load balancing across two containers using HAProxy  
+-  Built-in error handling for unavailable API responses  
+-  Easily deployable on multi-container environments
 
 ---
 
@@ -18,7 +18,7 @@ Accessible via: `http://<your_lb01_public_ip>:8082`
 
 ---
 
-## 📷 Load Balancer Logs (HAProxy Round-Robin Verification)
+##  Load Balancer Logs (HAProxy Round-Robin Verification)
 
 This screenshot shows requests being served alternately by both web01 and web02 via HAProxy:
 
@@ -39,7 +39,7 @@ This screenshot shows requests being served alternately by both web01 and web02 
 ```bash
 docker build -t tifarekaseke/job-finder-app:v1 .
 docker push tifarekaseke/job-finder-app:v1
-🚀 Run Instructions
+ Run Instructions
 On Web01:
 
 bash
@@ -58,7 +58,7 @@ docker run -d \
   --name job-app-web02 \
   -p 8080:8080 \
   tifarekaseke/job-finder-app:v1
-⚖️ Load Balancer Configuration (HAProxy on Lb01)
+ Load Balancer Configuration (HAProxy on Lb01)
 HAProxy Config (/usr/local/etc/haproxy/haproxy.cfg):
 
 haproxy
